@@ -7,7 +7,7 @@ description = "Turbo compressor and expander gas calculations"
 readme = "README.md"
 repository = "https://github.com/fjpereny/rotating-equipment"
 license = "MIT"
-keywords = ["aerospace", "mathematics", "science", "science::robotics"]
+keywords = ["aerospace", "mathematics", "science"]
 
 
 [dependencies]
