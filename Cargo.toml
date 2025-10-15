@@ -1,6 +1,6 @@
 [package]
 name = "eng-turbo"
-version = "0.1.0"
+version = "0.0.0"
 authors = ["Frank Pereny <fjpereny@gmail.com>"]
 edition = "2024"
 description = "Turbo compressor and expander gas calculations"
