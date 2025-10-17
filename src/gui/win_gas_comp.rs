@@ -1,11 +1,9 @@
 
-
-use std::sync::Arc;
-
-use eframe::egui::{self, Ui};
-use aga8::composition::{Composition, CompositionError};
-use crate::{gas_properties::gas_comp::GasComp, MyApp};
+use eframe::egui::{self, Color32, Ui, Vec2};
+use aga8::composition::Composition;
+use crate::MyApp;
 use crate::gui::win_gas_comp_warn;
+use crate::gui::plots::pie_chart;
 
 pub fn gas_comp_window(app: &mut MyApp, ctx: &eframe::egui::Context, _ui: &mut Ui) {
     
@@ -69,9 +67,54 @@ pub fn gas_comp_window(app: &mut MyApp, ctx: &eframe::egui::Context, _ui: &mut U
                     app.show_win_gas_comp_warn = false;
                 }
             };
+
+            let desired_size = Vec2::new(250.0, 250.0);
+            let radius = 100.0;
+            let (rect, _response) = ui.allocate_exact_size(desired_size, egui::Sense::hover());
+            ui.painter().debug_rect(rect, Color32::MAGENTA, "Debug Rectangle");
+
+            let mut data = vec![];
+            if app.gas_comp.Argon > 0.0 {
+                data.push(
+                    ("Argon", app.gas_comp.Argon as f32, Color32::GREEN)
+                );
+            }
+            if app.gas_comp.CarbonDioxide > 0.0 {
+                data.push(
+                    ("CO2", app.gas_comp.CarbonDioxide as f32, Color32::GRAY),
+                );
+            }
+            if app.gas_comp.CarbonMonoxide > 0.0 {
+                data.push(
+                    ("CO", app.gas_comp.CarbonMonoxide as f32, Color32::RED),
+                );
+            }
+            if app.gas_comp.Helium > 0.0 {
+                data.push(
+                    ("Helium", app.gas_comp.Helium as f32, Color32::LIGHT_BLUE),
+                );
+            }
+            if app.gas_comp.Hydrogen > 0.0 {
+                data.push(
+                    ("Hydrogen", app.gas_comp.Hydrogen as f32, Color32::BLUE),
+                );
+            }
+            if app.gas_comp.Nitrogen > 0.0 {
+                data.push(
+                    ("Nitrogen", app.gas_comp.Nitrogen as f32, Color32::LIGHT_GREEN),
+                );
+            }
+            if app.gas_comp.Oxygen > 0.0 {
+                data.push(
+                ("Oxygen", app.gas_comp.Oxygen as f32, Color32::LIGHT_RED),
+                );
+            }
+            
+            pie_chart::draw_pie_chart(ui, radius, &data, rect);
             
         });
     if app.show_win_gas_comp_warn {
     win_gas_comp_warn::gas_comp_window(app, ctx);
     }
 }
+

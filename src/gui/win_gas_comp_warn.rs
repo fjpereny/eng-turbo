@@ -1,6 +1,6 @@
 
 
-use eframe::egui::{self, Ui};
+use eframe::egui;
 use crate::MyApp;
 
 pub fn gas_comp_window(app: &mut MyApp, ctx: &eframe::egui::Context) {
