@@ -1,0 +1,51 @@
+
+
+pub enum Gas {
+    Methane,
+    Nitrogen,
+    CarbonDioxide,
+    Ethane,
+    Propane,
+    Isobutane,
+    NButane,
+    Isopentane,
+    NPentane,
+    Hexane,
+    Heptane,
+    Octane,
+    Nonane,
+    Decane,
+    Hydrogen,
+    Oxygen,
+    CarbonMonoxide,
+    Water,
+    HydrogenSulfide,
+    Helium,
+    Argon,
+}
+
+
+#[derive(Debug, Default, Clone)]
+pub struct GasComp {
+    pub Methane: f64,
+    pub Nitrogen: f64,
+    pub CarbonDioxide: f64,
+    pub Ethane: f64,
+    pub Propane: f64,
+    pub Isobutane: f64,
+    pub NButane: f64,
+    pub Isopentane: f64,
+    pub NPentane: f64,
+    pub Hexane: f64,
+    pub Heptane: f64,
+    pub Octane: f64,
+    pub Nonane: f64,
+    pub Decane: f64,
+    pub Hydrogen: f64,
+    pub Oxygen: f64,
+    pub CarbonMonoxide: f64,
+    pub Water: f64,
+    pub HydrogenSulfide: f64,
+    pub Helium: f64,
+    pub Argon: f64,
+}
